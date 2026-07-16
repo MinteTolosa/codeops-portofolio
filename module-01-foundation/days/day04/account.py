@@ -13,10 +13,14 @@ class Account:
             raise ValueError("Amount must be positive")
         self.__balance += amount
 
+
+# TODO: withdraw(amount) — reject overdrafts
+# TODO: statement() — print owner, number, balance
+
     def withdraw(self, amount):
         if amount <= 0:
             raise ValueError("Amount must be positive")
-        if amount > self.__balance:
+        elif amount > self.__balance:
             raise ValueError("Insufficient funds")
         self.__balance -= amount
 
@@ -25,3 +29,5 @@ class Account:
         print(f"Account Number: {self.account_number}")
         print(f"Balance: {self.__balance}")
         
+Minte = Account("Mintesinot Tolosa", "123456789", 50000)
+Minte.statement()
