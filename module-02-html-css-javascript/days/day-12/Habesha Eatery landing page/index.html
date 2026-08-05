@@ -3,100 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Fill in <title>, meta description and one ordered heading outline. -->
-    <meta description="Habesha Eatery is a restaurant that serves traditional Ethiopian cuisine. Our menu features a variety of dishes made with fresh, locally sourced ingredients.">
-    <meta keywords="Habesha Eatery, Ethiopian cuisine, traditional dishes, fresh ingredients, restaurant, food, dining, catering, takeout, delivery">
-    <meta author="Habesha Eatery">
+    <meta name="description" content="Habesha Eatery is a restaurant that serves traditional Ethiopian cuisine. Our menu features a variety of dishes made with fresh, locally sourced ingredients.">
+    <meta name="keywords" content="Habesha Eatery, Ethiopian cuisine, traditional dishes, fresh ingredients, restaurant, food, dining, catering, takeout, delivery">
+    <meta name="author" content="Habesha Eatery">
     <title>Habesha Eatery</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!--Build the Habesha Eatery landing page
-DELIVERABLE 
-    A single accessible, SEO-ready index.html combining a reservation
-form, a menu table, a hero image and an embedded map.
-Steps
-• Build a reservation form: name, tel (pattern 09xxxxxxxx), guests (1–20), date
-— each with a real <label>.
-• Add the menu as a <table> with caption, scope and an ETB price column.
-• Insert the hero image with meaningful alt and loading="lazy"
-• Embed a Google Map iframe with a title attribute.
-• Fill in <title>, meta description and one ordered heading outline.
-• Tab through the whole page with no mouse; fix any trap -->
 
+    <h1>Habesha Eatery</h1>
 
-<!-- Insert the hero image with meaningful alt and loading="lazy". -->
-<img src="assets/hero-image.jpg" 
-        alt="Habesha Eatery - Traditional Ethiopian Cuisine" 
-            loading="lazy">
+    <!-- Hero Asset -->
+    <img src="assets/hero-image.jpg" alt="Habesha Eatery traditional dining showcase" loading="lazy">
 
-<!-- • Build a reservation form: name, tel (pattern 09xxxxxxxx), guests (1–20), date
-— each with a real <label>. -->
-<form action="https://formspree.io/f/mnqvkwqv" method="POST">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+    <!-- Form Section -->
+    <div class="layout-section">
+        <h2>Reservation</h2>
+        <form action="https://formspree.io" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
 
-    <label for="tel">Telephone:</label>
-    <input type="tel" id="tel" name="tel" pattern="[0-9]{10}" required>
+            <label for="tel">Telephone</label>
+            <input type="tel" id="tel" name="tel" pattern="[0-9]{10}" placeholder="09xxxxxxxx" required>
 
-    <label for="guests">Number of Guests:</label>
-    <input type="number" id="guests" name="guests" min="1" max="20" required>
+            <label for="guests">Number of Guests</label>
+            <input type="number" id="guests" name="guests" min="1" max="20" required>
 
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date" required>
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
 
-    <button type="submit">Reserve</button>
+            <button type="submit">Reserve</button>
+        </form>
+    </div>
 
-    <!-- Add the menu as a <table> with caption, scope and an ETB price column. -->
+    <!-- Menu Table Section -->
+    <div class="layout-section">
+        <table>
+            <caption>Habesha Eatery Menu</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Dish</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price (ETB)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>injera</td>
+                    <td>Traditional Ethiopian flatbread</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>doro wat</td>
+                    <td>Spicy chicken stew</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>kitfo</td>
+                    <td>Minced raw beef with spices</td>
+                    <td>120</td>
+                </tr>
+                <tr>
+                    <td>shiro</td>
+                    <td>Chickpea stew</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>tibs</td>
+                    <td>Sautéed meat with vegetables</td>
+                    <td>90</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <table>
-        <caption>Habesha Eatery Menu</caption>
-        <thead>
-            <tr>
-                <th scope="col">Dish</th>
-                <th scope="col">Description</th>
-                <th scope="col">Price (ETB)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td> injera </td>
-                <td> Traditional Ethiopian flatbread </td>
-                <td> 30 </td>
-            </tr>
-            <tr>
-                <td> doro wat </td>
-                <td> Spicy chicken stew </td>
-                <td> 1500 </td>
-            </tr>
-            <tr>
-                <td> kitfo </td>
-                <td> Minced raw beef with spices </td>
-                <td> 1200 </td>
-            </tr>
-            <tr>
-                <td> shiro </td>
-                <td> Chickpea stew </td>
-                <td> 250 </td>
-            </tr>
-            <tr>
-                <td> tibs </td>
-                <td> Sautéed meat with vegetables </td>
-                <td> 900 </td>
-            </tr>
-        </tbody>
-    </table>
-
-<!-- Embed a Google Map iframe with a title attribute. -->
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10095.82602340484!2d38.963747999999996!3d9.070576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8548baf72c55%3A0x5c8e5e5e5e5e5e5e!2sAddis%20Ababa!5e0!3m2!1sen!2set!4v1634567890123!5m2!1sen!2set" 
-        title="Habesha Eatery Location" 
-        width="600" 
-        height="450" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-</iframe>
+    <!-- Map Section -->
+    <div class="layout-section">
+        <h2>Location</h2>
+        <div class="map-wrapper">
+            <iframe src="https://google.com" 
+                    title="Habesha Eatery Location Map" 
+                    width="600" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
 
 </body>
 </html>
