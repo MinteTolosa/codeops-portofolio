@@ -5,13 +5,13 @@ const provider = "TeleBirr";
 const bill = Number(billInput);
 
 
-const receipt = bill > 300 ? 0.10 : 0.05;
+const tipPercent = bill > 300 ? 0.10 : 0.05;
 // let tipPercent = 0.05;
 // if (bill > 300) {
 //     tipPercent = 0.10;
 // }
 
-const tipAmount = bill * 0.05;
+const tipAmount = bill * tipPercent;
 let serviceFee = 0;
 
 switch (provider) {
