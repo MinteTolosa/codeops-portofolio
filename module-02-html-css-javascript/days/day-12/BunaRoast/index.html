@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <title>BunaRoast | Premium Ethiopian Specialty Coffee</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"> -->
+  <title>Buna Roast</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sticky Navigation Bar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#" class="logo" aria-label="BunaRoast Home">
+        Buna<span>Roast</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="#shop" class="nav-link">Shop All</a></li>
+          <li><a href="#heritage" class="nav-link">Our Heritage</a></li>
+          <li><a href="#wholesale" class="nav-link">Wholesale</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section with Motion-Reduced Safe Animations & Clamp Typography -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title" class="hero-heading">Elegance in Every Single Drop.</h1>
+        <p class="hero-subtext">Sustainably sourced, micro-lot organic beans directly from Yirgacheffe and Sidama highlands, roasted to perfection.</p>
+        <a href="#shop" class="btn btn-primary">Explore the Collection</a>
+      </div>
+    </section>
+
+    <!-- Trending Roasts Grid Gallery Section -->
+    <section id="shop" class="shop-section" aria-labelledby="shop-title">
+      <div class="section-header-container">
+        <h2 id="shop-title" class="section-title">Trending Roasts</h2>
+      </div>
+
+      <!-- Auto-Fit Mathematically Responsive Grid Layout -->
+      <div class="product-grid">
+        
+        <!-- Product Card 1 (With Absolute Badge) -->
+        <article class="product-card">
+          <div class="image-wrapper">
+            <span class="badge badge-sale" aria-label="Promotion">20% OFF</span>
+            <img src="img/Coffee_Bag-Ethiopia_Yirgacheffe.jpg" alt="Yirgacheffe Light Roast coffee bag" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <h3 class="product-title">Yirgacheffe Heirloom</h3>
+              <p class="product-description">Notes of floral jasmine, bright citrus, and crisp bergamot sweetness.</p>
+            </div>
+            <div class="card-action">
+              <span class="prodlash.comuct-price">$19.20 <span class="old-price">$24.00</span></span>
+              <button class="btn btn-secondary" aria-label="Add Yirgacheffe Heirloom to cart">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product Card 2 (With Absolute Badge) -->
+        <article class="product-card">
+          <div class="image-wrapper">
+            <span class="badge badge-popular" aria-label="Status">Best Seller</span>
+            <img src="img/Sindamo_Coffee_Bag.jpg" alt="Sidama Honey Process coffee bag" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <h3 class="product-title">Sidama Reserve</h3>
+              <p class="product-description">Rich profile featuring deep red berry notes, honey, and creamy milk chocolate finish.</p>
+            </div>
+            <div class="card-action">
+              <span class="product-price">$22.00</span>
+              <button class="btn btn-secondary" aria-label="Add Sidama Reserve to cart">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product Card 3 -->
+        <article class="product-card">
+          <div class="image-wrapper">
+            <img src="img/Harrar.jpg" alt="Harrar Dark Roast coffee bag" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <h3 class="product-title">Harrar Bold</h3>
+              <p class="product-description">A robust cup highlighting intense wild blueberry tones, heavy body, and dark cacao undertones.</p>
+            </div>
+            <div class="card-action">
+              <span class="product-price">$21.50</span>
+              <button class="btn btn-secondary" aria-label="Add Harrar Bold to cart">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product Card 4 -->
+        <article class="product-card">
+          <div class="image-wrapper">
+            <img src="img/Limu_Coffee Beans.jpg" alt="Limu Single Origin coffee bag" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <h3 class="product-title">Limu Estate</h3>
+              <p class="product-description">Excellently balanced cup with crisp white grape notes, spice overtones, and clean sweet finish.</p>
+            </div>
+            <div class="card-action">
+              <span class="product-price">$20.00</span>
+              <button class="btn btn-secondary" aria-label="Add Limu Estate to cart">Add to Cart</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile-First Responsive Footer Layout -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo">BunaRoast</span>
+        <p>Bringing you premium micro-lot beans directly from the birthplace of coffee.</p>
+      </div>
+      <div class="footer-links-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Our Origin</a></li>
+          <li><a href="#">Roasting Process</a></li>
+          <li><a href="#">Subscription Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Shipping FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Returns Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter/X</a></li>
+          <li><a href="#">Monthly Newsletter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 BunaRoast Coffee Roasters. Ethically sourced.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,451 @@
+/* ==========================================================================
+   1. CSS FOUNDATIONS & DESIGN TOKENS (Day 13)
+   ========================================================================== */
+
+:root {
+  /* Premium Coffee Brand Color Palette */
+  --brand-brown-dark: #2B1810;
+  --brand-brown-medium: #4A3525;
+  --gold-accent: #C5A059;
+  --gold-accent-hover: #E2B96B;
+  --bg-off-white: #FBF9F6;
+  --bg-card-white: #FFFFFF;
+  --text-dark: #1F1612;
+  --text-muted: #6B5B52;
+  --border-light: #EAE3DC;
+
+  /* Global Spacing Scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  /* Global Layering System Stack */
+  --z-badge: 10;
+  --z-sticky-nav: 100;
+}
+
+/* Base Document Overrides & Fluid System Baseline */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-off-white);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   2. REUSABLE ATOMIC COMPONENTS & GLOBAL CONTROLS
+   ========================================================================== */
+
+/* Universal Dynamic Interactive States Control System */
+a, button {
+  transition: all 200ms ease-out;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--gold-accent);
+  outline-offset: 4px;
+}
+
+/* Global Button Archetypes */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--gold-accent);
+  color: var(--brand-brown-dark);
+}
+
+.btn-primary:hover {
+  background-color: var(--gold-accent-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--brand-brown-medium);
+  color: var(--brand-brown-medium);
+}
+
+.btn-secondary:hover {
+  background-color: var(--brand-brown-medium);
+  color: var(--bg-card-white);
+}
+
+/* Decorative Heading Underline via Advanced Pseudo-Elements */
+.section-header-container {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.25rem;
+  color: var(--brand-brown-dark);
+  position: relative;
+  display: inline-block;
+  padding-bottom: var(--space-xs);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--gold-accent);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   3. STRUCTURAL SYSTEM LAYOUT MECHANICS (Day 14 & Day 15)
+   ========================================================================== */
+
+/* Flexbox Header Layer Structure Implementation */
+.site-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky-nav);
+  background-color: rgba(251, 249, 246, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem var(--space-md);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--brand-brown-dark);
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--gold-accent);
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: var(--space-md);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--brand-brown-medium);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover {
+  color: var(--gold-accent);
+}
+
+/* Hero Section with Mathematical Fluid Typography Core Structure */
+.hero-section {
+ background-image: linear-gradient(rgba(43, 24, 16, 0.60), rgba(43, 24, 16, 0.85)), 
+  url('img/hero-coffee.png');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--bg-off-white);
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.hero-content {
+  max-width: 800px;
+}
+
+/* Fluid Size Typography Implementation via clamp() */
+.hero-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.15;
+  margin-bottom: var(--space-sm);
+  color: #FFFFFF;
+}
+
+.hero-subtext {
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.35rem);
+  max-width: 600px;
+  margin: 0 auto var(--space-lg);
+  color: var(--border-light);
+}
+
+/* Grid Layout Implementation for the Products Gallery Container */
+.shop-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Flexbox Multi-Axis Alignment Blueprint For Uniform Grid Cards */
+.product-card {
+  background-color: var(--bg-card-white);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* Stretches card actions to align vertically */
+  transition: transform 250ms ease-out, box-shadow 250ms ease-out;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(43, 24, 16, 0.08);
+}
+
+/* Image Wrapper Positioning Framework */
+.image-wrapper {
+  position: relative;
+  background-color: var(--bg-off-white);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.product-card:hover .image-wrapper img {
+  transform: scale(1.04);
+}
+
+/* Micro-Positioned Badge Overlays */
+.badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: var(--z-badge);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  color: #FFFFFF;
+}
+
+.badge-sale {
+  background-color: #D32F2F;
+}
+
+.badge-popular {
+  background-color: var(--brand-brown-dark);
+  border: 1px solid var(--gold-accent);
+}
+
+/* Flexbox Body Layout of Cards Providing Equal Spatial Geometry */
+.card-body {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Pushes content down to self-normalize row alignment */
+}
+
+.card-meta {
+  flex-grow: 1;
+  margin-bottom: var(--space-md);
+}
+
+.product-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: var(--brand-brown-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.product-description {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.card-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-light);
+}
+
+.product-price {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--brand-brown-dark);
+}
+
+.old-price {
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  margin-left: 0.25rem;
+}
+
+/* ==========================================================================
+   4. MOTION ARCHITECTURES & RUNTIME ANIMATIONS
+   ========================================================================== */
+
+/* Keyframe Fluid Entry Configurations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-content {
+  animation: slideUpFade 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Accessibility Control Layer Matrix */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .product-card:hover {
+    transform: none !important;
+  }
+  .product-card:hover .image-wrapper img {
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   5. RESPONSIVE MEDIA BREAKPOINTS (Mobile-First Paradigm)
+   ========================================================================== */
+
+/* Base Global Mobile Structure Ruleset */
+.site-footer {
+  background-color: var(--brand-brown-dark);
+  color: var(--border-light);
+  padding: var(--space-xl) var(--space-md) var(--space-md);
+}
+
+.footer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.footer-brand .footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.footer-links-col h4 {
+  color: var(--gold-accent);
+  font-size: 1rem;
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-links-col ul {
+  list-style: none;
+}
+
+.footer-links-col ul li {
+  margin-bottom: var(--space-xs);
+}
+
+.footer-links-col ul li a {
+  color: var(--border-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-links-col ul li a:hover {
+  color: var(--gold-accent);
+}
+
+.footer-bottom {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--brand-brown-medium);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Tablet Resolution Adaptation System */
+@media (min-width: 768px) {
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
