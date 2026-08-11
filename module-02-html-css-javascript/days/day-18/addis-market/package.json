@@ -1,0 +1,10 @@
+{
+  "name": "addis-market",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Addis Market Order Summary",
+  "main": "summary.js",
+  "scripts": {
+    "start": "node summary.js"
+  }
+}

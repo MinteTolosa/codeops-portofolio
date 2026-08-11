@@ -1,0 +1,65 @@
+Requirements
+
+---The project must:
+
+Export withVat from pricing.js
+Export format from pricing.js
+Import both functions into summary.js
+Store sample order data in orders.js
+Use reduce() to calculate each order's item total
+Destructure { price, qty } inside the item calculation
+Use map() to create a new array of orders
+Use the spread operator (...) to attach a total field
+Use filter() to find orders over 500 ETB
+Use reduce() to calculate the grand total
+Format prices in ETB
+Print a readable order summary
+
+
+---Tip
+
+Build the chain one method at a time and console.log() after each step.
+
+Confirm that the shape of your data is what you expect before adding the next link.
+
+---For example:
+
+console.log(orders);
+
+---Then:
+
+console.log(ordersWithTotals);
+
+----Then:
+
+console.log(ordersOver500);
+
+----Finally:
+
+console.log(grandTotal);
+
+---This makes it easier to identify errors before the chain becomes complicated.
+
+Self-Check List
+ ---pricing.js exports withVat
+ ---pricing.js exports format
+ ---summary.js imports both functions
+ ---orders.js contains an array of order objects
+ ---reduce() calculates each order's item total
+ ---{ price, qty } destructuring is used
+ ---map() attaches a total field
+ ---Spread syntax (...order) is used
+ ---filter() lists orders over 500 ETB
+ ---reduce() calculates the grand total
+ ---Amounts are formatted in ETB
+ ---The summary is printed to the console
+ ---console.log() is used after each major step
+
+### Expected project structure
+
+```text
+addis-market/
+├── pricing.js
+├── orders.js
+├── summary.js
+└── README.md
