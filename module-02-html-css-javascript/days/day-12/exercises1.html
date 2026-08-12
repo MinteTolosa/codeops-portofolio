@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethio Telecom Registration</title>
+</head>
+<body>
+    <!-- Using POST because registration data should not be exposed in the URL and may include sensitive information. -->
+    <form action="/register" method="post">
+        <fieldset>
+            <legend>Ethio Telecom Registration Form</legend>
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </p>
+            <p>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </p>
+            <p>
+                <label for="tel">Tel:</label>
+                <input type="tel" id="tel" name="tel" pattern="\+251[0-9]{9}" placeholder="+251XXXXXXXXX" required>
+            </p>
+            <p>
+                <label for="branch">Branch:</label>
+                <select id="branch" name="branch" required>
+                    <option value="">Select a branch</option>
+                    <option value="Bole">Bole</option>
+                    <option value="Kazanchis">Kazanchis</option>
+                    <option value="Piassa">Piassa</option>
+                </select>
+            </p>
+            <p class="button">
+                <button type="submit">Register</button>
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>

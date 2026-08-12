@@ -1,0 +1,31 @@
+<!-- Take an inaccessible snippet — a div used as a button, an unlabelled input,
+    an image with no alt — and rewrite all three correctly.   
+    Note in a comment what each fix gives a screen-reader or
+    keyboard user -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 4 - Accessible Form</title>
+</head>
+<body>
+    <form>
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <!-- Fix: Added a label for the input, which provides context for screen readers. -->
+        </p>
+        <p>
+            <label for="profile-pic">Profile Picture:</label>
+            <input type="file" id="profile-pic" name="profile-pic" accept="image/*">
+            <!-- Fix: Added a label for the file input, which provides context for screen readers. -->
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+            <!-- Fix: Replaced the div with a button element, which is accessible to keyboard users and screen readers. -->
+        </p>
+    </form>
+</body>
+</html>
