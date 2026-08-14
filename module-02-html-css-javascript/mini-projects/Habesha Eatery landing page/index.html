@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Habesha Eatery is a restaurant that serves traditional Ethiopian cuisine. Our menu features a variety of dishes made with fresh, locally sourced ingredients.">
+    <meta name="keywords" content="Habesha Eatery, Ethiopian cuisine, traditional dishes, fresh ingredients, restaurant, food, dining, catering, takeout, delivery">
+    <meta name="author" content="Habesha Eatery">
+    <title>Habesha Eatery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Habesha Eatery</h1>
+
+    <!-- Hero Asset -->
+    <img src="assets/hero-image.jpg" alt="Habesha Eatery traditional dining showcase" loading="lazy">
+
+    <!-- Form Section -->
+    <div class="layout-section">
+        <h2>Reservation</h2>
+        <form action="https://formspree.io" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="tel">Telephone</label>
+            <input type="tel" id="tel" name="tel" pattern="[0-9]{10}" placeholder="09xxxxxxxx" required>
+
+            <label for="guests">Number of Guests</label>
+            <input type="number" id="guests" name="guests" min="1" max="20" required>
+
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">Reserve</button>
+        </form>
+    </div>
+
+    <!-- Menu Table Section -->
+    <div class="layout-section">
+        <table>
+            <caption>Habesha Eatery Menu</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Dish</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price (ETB)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>injera</td>
+                    <td>Traditional Ethiopian flatbread</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>doro wat</td>
+                    <td>Spicy chicken stew</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>kitfo</td>
+                    <td>Minced raw beef with spices</td>
+                    <td>120</td>
+                </tr>
+                <tr>
+                    <td>shiro</td>
+                    <td>Chickpea stew</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>tibs</td>
+                    <td>Sautéed meat with vegetables</td>
+                    <td>90</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Map Section -->
+    <div class="layout-section">
+        <h2>Location</h2>
+        <div class="map-wrapper">
+            <iframe src="https://google.com" 
+                    title="Habesha Eatery Location Map" 
+                    width="600" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <figcaption>Google Map Location for Habesha Eatery</figcaption>
+        </div>
+    </div>
+
+</body>
+</html>
