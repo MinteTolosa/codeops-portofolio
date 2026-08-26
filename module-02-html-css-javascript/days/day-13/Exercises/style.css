@@ -1,0 +1,126 @@
+:root {
+    /* color root */
+    --brand: rgba(21, 4, 53, 0.3);
+    --gold: hsl(120, 62%, 30%);
+    --background: #ffffff;
+    --color: #1e2229;
+    --star-color: #bbc1e1;
+    --star-hover: hsl(146, 50%, 20%);
+    --star-active: #d4fd; 
+
+    /* Space */
+    --space: 16px;
+
+    /* font family */
+
+    --font-family: nato Sans Ethiopic, -apple-system, sans-serif;
+    --font-size: 18px;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /* display: flex; */
+    background-color: #faebfa;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+p{
+   color: var(--gold);
+}
+#win{
+    color: var(--star-active);
+}
+.win{
+    color: var(--star-active);
+}
+.container{
+    box-sizing: border-box;
+    margin: 20px 10px;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+
+    
+}
+
+.main-container1{
+    box-sizing: content-box;
+    width: 400px;
+    height: 250px;
+    background-color: #ffff;
+    border: 2px solid var(--gold);
+    border-radius: .8rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size);
+    text-align: center;
+}
+.main-container{
+    box-sizing: border-box;
+    width: 400px;
+    height: 250px;
+    background-color: #ffff;
+    border: 2px solid var(--gold);
+    border-radius: .8rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size);
+    text-align: center;
+}
+.btn-container{
+    display: flex;
+    align-items: center;
+
+    padding-left: 60px;
+}
+.btn{
+    display: flex;
+    align-items: center;
+    background: var(--star-color);
+    color: var(--color);
+    padding: 12px 24px;
+    border-radius: 11px;
+    border: 1px solid #e1e4f2; /* Subtle structural border */
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    font-size: var(--font-size);
+}
+.btn:hover{
+    background-color: var(--gold);
+}
+.table1{
+    display: flex;
+    justify-content: center;
+}
+table{
+    width: 700px;
+    height: 250px;
+    align-items: center;
+    border: #0a1f3d;
+}
+th{
+    height: 20px;
+    padding: 30px;
+    border: 2px solid var(--star-active);
+    background: #646b8c;
+}
+tr{
+    width: 300px;
+    min-height: 80vh;
+    padding: 300px;
+}
+tr:nth-child(odd) {
+background: rgb(10, 68, 15);
+}
+/* *{
+    border: 1px solid var(--star-active);
+} */

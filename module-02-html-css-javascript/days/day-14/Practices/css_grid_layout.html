@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid Layout</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+body{
+    box-sizing: border-box;
+    display:flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.page {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+
+.site-header {
+  grid-area: header;
+}
+
+.side {
+  grid-area: sidebar;
+}
+
+.main {
+  grid-area: main;
+}
+
+.foot {
+  grid-area: footer;
+}
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <header class="site-header">
+      <h1>My Website</h1>
+    </header>
+
+    <aside class="side">
+      <h2>Sidebar</h2>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h2>Welcome</h2>
+      <p>
+        This is the main content area of the page.
+      </p>
+    </main>
+
+    <footer class="foot">
+      <p>&copy; 2026 My Website</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

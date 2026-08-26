@@ -18,6 +18,6 @@ node tip.js
 
 ## Features Demonstrated
 * Data type conversion using `Number()`.
-* Tiered tip calculation using `if...else` logic.
+* Tiered tip calculation using `Ternery Opreator` and `if...else` logic.
 * Payment provider service fee processing using `switch` statements.
 * Output formatting via JavaScript Template Literals.

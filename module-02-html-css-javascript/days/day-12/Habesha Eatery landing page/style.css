@@ -109,7 +109,7 @@
         }
         th, td {
             padding: 10px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #000;
         }
         th {
             color: #555;
@@ -134,4 +134,7 @@
         iframe {
             width: 100% !important;
             display: block;
+        }
+        figcaption{
+            text-align: center;
         }
