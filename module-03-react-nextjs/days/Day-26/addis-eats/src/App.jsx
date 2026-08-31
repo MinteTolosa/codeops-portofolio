@@ -1,18 +1,16 @@
-import './App.css'
-import Header from './components/Header/Header'
-import Sidebar from './components/Main/Sidebar/Sidebar'
-import Menu from './components/Main/Menu/Menu'
-import Footer from './components/Footer/Footer'
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Menu from "./components/Menu";
+import "./css/style.css";
 
 function App() {
-   
-  return (
+  
+return (
     <>
-      <Header/>
-      <Main/>
-      <Sidebar/>
-      <Footer/>
-
+      <Header />
+      <Menu />
+      <Footer />
+      
     </>
   )
 }
