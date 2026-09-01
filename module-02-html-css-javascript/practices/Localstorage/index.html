@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localstorage practice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Localstorage practice</h1>
+    <form action="" id="myForm" class="myForm">
+    <fieldset class="fieldset">
+        <legend>Membership SignUp</legend>
+        <p>
+            <label for="Idmember">MembershipId:</label>
+            <input type="number" id="memberId" class="employeeId" required>
+        </p>
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="name" required>
+        </p>
+        <p>
+            <label for="year">year:</label>
+            <input type="number" id="year" class="year" required>
+        </p>
+        
+        <input type="submit" value="Save Membership" class="btn">
+    </fieldset>
+    </form>
+
+    <h2>Loyal Members</h2>
+    <ul id="memberList">
+
+    </ul>
+   <form action="" id="myRemoveForm" class="myRemoveForm">
+    <label for="removeId">Id:</label>
+    <input type="number" id="removeId" name="removeId" required>
+    <input type="submit" value="Delete Members">
+
+   </form>
+    
+    <script src = "./apps.js"></script>
+</body>
+</html>

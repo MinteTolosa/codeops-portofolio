@@ -1,0 +1,76 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 40px;
+    word-spacing: 1.6px;
+    font-size: 25px;
+    /* display: inline-block; */
+    
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 30px;
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 15px 10px rgba(37, 35, 35, 0.2);
+}
+ul li{
+    margin-bottom: 20px;
+    /* border: 2px solid #ccc ; */
+    display: inline-block;
+    padding: 8px;
+}
+.myForm{
+    /* display: inline-block; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+}
+.fieldset{
+    padding: 50px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 10px 10px rgba(37, 35, 35, 0.547);
+}
+.fieldset p{
+    margin: auto;
+    padding: 8px;
+    text-align: left;  
+}
+p input{
+    padding: 15px;
+    width: 100%;
+}
+.fieldset input{
+    padding: 10px;
+    margin-top: 10px;
+    margin: 10px ;
+    border-radius: 8px;
+    
+/*     
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+     */
+}
+.myRemoveForm{
+    margin: 20px;
+    text-align: center;
+}
+.myRemoveForm input{
+    padding: 10px;
+    border-radius: 8px;
+}
