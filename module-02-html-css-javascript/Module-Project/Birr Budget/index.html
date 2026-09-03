@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Style/style.css"/>
+    <title>Birr Budget</title>
+</head>
+<body>
+    <header class="site-header">
+  <div class="container">
+    <h1>Birr Budget</h1>
+    <p>Simple money tracking in Ethiopian Birr.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="summary" aria-labelledby="summary-title">
+    <h2 id="summary-title">Your Summary</h2>
+
+    <div class="summary-grid">
+      <article>
+        <h3>Balance</h3>
+        <p id="balance">0 ETB</p>
+      </article>
+
+      <article>
+        <h3>Income</h3>
+        <p id="income">0 ETB</p>
+      </article>
+
+      <article>
+        <h3>Expenses</h3>
+        <p id="expenses">0 ETB</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="transaction-title">
+    <h2 id="transaction-title">Add Transaction</h2>
+
+    <form id="transaction-form">
+      <label for="description">Description</label>
+      <input id="description" type="text" required>
+
+      <label for="amount">Amount</label>
+      <input id="amount" type="number" min="1" required>
+
+      <label for="type">Type</label>
+      <select id="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+
+      <button type="submit">Add Transaction</button>
+    </form>
+  </section>
+
+  <section aria-labelledby="transactions-title">
+    <h2 id="transactions-title">Transactions</h2>
+
+    <label for="search">Search transactions</label>
+    <input id="search" type="search" placeholder="Search...">
+
+    <ul id="transaction-list"></ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>Birr Budget — Track your money, one birr at a time.</p>
+</footer>
+
+<script src="./JS/app.js"></script>
+</body>
+</html>
