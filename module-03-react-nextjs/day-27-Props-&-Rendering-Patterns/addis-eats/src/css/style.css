@@ -1,0 +1,30 @@
+h1{
+    color: rgb(240, 186, 87);
+    text-align: center;
+}
+
+.cards{
+    background-color: #f9f9f9;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
+.card-container {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(2 ,1fr);
+    gap: 20px;
+}
+
+.footer{
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (min-width: 668px) {
+    .card-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
