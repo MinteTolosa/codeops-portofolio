@@ -1,6 +1,6 @@
-# IBT Collage Traning/Class Repository
+# IBT Collage Class Repository
 
-Welcome to your personal repository for IBT & Qiyas Academy.
+Welcome to my personal repository for IBT & Qiyas Academy.
 
 This repository is used to store all of my class assignments, exercises, mini projects, and learning progress throughout the program.
 
