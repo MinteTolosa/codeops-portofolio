@@ -1,7 +1,16 @@
-import React from 'react'
+import React from 'react';
+import { cookies } from 'next/headers';
 
-export default function CheckOut() {
+export default async function CheckOut() {
+
+    const cookieStore = await cookies();
+    const session = cookieStore.get('session');
   return (
-    <div>Checkout Pagees</div>
+    <main>
+    <div>Checkout Pages</div>
+    {
+      session ? (<p>You are welcome</p>) : (<p>You have to log in to welcomed.</p>)
+    }
+    </main>
   )
 }
