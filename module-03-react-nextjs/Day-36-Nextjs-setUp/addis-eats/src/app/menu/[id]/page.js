@@ -2,9 +2,15 @@ import { menus } from "../../../data/menus";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+
+
+export async function generateStaticParams() {
+  return menus.map((menu) => ({ id: menu.id.toString(),}));
+}
 export default async function SingleDishPage({ params }) {
   const { id } = await params;
   const menu = menus.find( (item) => item.id === parseInt(id) );
+  // console.log(menu);
   if (!menu) {
     notFound();
   }

@@ -1,0 +1,7 @@
+h2{
+    text-align: center;
+    color: var(--heading-color);
+}
+main {
+  margin-top: 1rem;
+}

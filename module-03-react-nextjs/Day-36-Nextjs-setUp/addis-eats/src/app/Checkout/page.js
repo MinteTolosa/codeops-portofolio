@@ -1,11 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { cookies } from 'next/headers';
 
-function Checkout() {
+export default async function Checkoutpage() {
+
+  const cookieStore = await cookies();
+  const session = cookieStore.get('session');
   return (
-    <div>
-        <h1>Checkout Pages</h1>
-    </div>
+    <main>
+      <h1>Checkout</h1>
+      {
+        session 
+        ? (<p>Your are logged in</p>)
+        : (<p>please log in</p>)
+      }
+    </main>
   );
 }
-
-export default Checkout
