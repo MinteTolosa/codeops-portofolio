@@ -4,7 +4,7 @@ export default function MenuLayout({ children}) {
   return (
     <div>
         <section>{ children }</section>
-        <p>MenuLayout pages</p>
+        <p>SideBar/category MenuLayout</p>
     </div>
    
   )
