@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import CartLink from "../CartLink";
 
 export default function Navbar() {
   return (
@@ -16,9 +17,7 @@ export default function Navbar() {
           <Link href="/menu" className="text-[#f5efe6] transition hover:text-[#c9a96e]" >
             Menu
           </Link>
-          <Link href="/Cart" className="text-[#f5efe6] transition hover:text-[#c9a96e]" >
-            Cart
-          </Link>
+          <CartLink />
           <Link href="/Checkout" className="text-[#f5efe6] transition hover:text-[#c9a96e]" >
             Checkout
           </Link>
