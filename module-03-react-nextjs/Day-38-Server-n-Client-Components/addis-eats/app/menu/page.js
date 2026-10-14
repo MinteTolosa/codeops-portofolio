@@ -1,6 +1,4 @@
-
 import {Suspense} from "react";
-import TestButton from "./TestButton";
 import DishList from "./DishList";
 import FilterShell from "./FilterShell";
 
@@ -17,8 +15,7 @@ async function getMenus() {
 
 export default async function MenuPage() {
   const menus = await getMenus();
-
-  return (
+return (
   <main className="min-h-screen bg-[#17130f] px-6 py-12 text-[#f5efe6]">
     <div className="mx-auto max-w-6xl">
     <div className="mb-12 text-center">
@@ -32,11 +29,10 @@ export default async function MenuPage() {
       Explore traditional Ethiopian dishes.
     </p>
     </div>
-    <Suspense fallback={<p>Loading dishes...</p>}>
-    <FilterShell>
+ <Suspense fallback={<p>Loading dishes...</p>}>
+  <FilterShell>
     <DishList menus={menus} />
-    </FilterShell>
-    <TestButton />
+  </FilterShell>
  </Suspense>
 </div>
 </main>

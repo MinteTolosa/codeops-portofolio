@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { useCart } from './CartProvider';
+import { useCart } from '../CartProvider/CartProvider';
 
 export default function AddToCartButton({item}) {
     const {addToCart} = useCart();

@@ -9,7 +9,6 @@ function loadData() {
     transactions = JSON.parse(savedData);
   }
 }
-
 // Save
 function saveData() {
   localStorage.setItem("birrBudget", JSON.stringify(transactions));
@@ -23,22 +22,17 @@ function render() {
   const expenses = document.querySelector("#expenses");
 
   list.innerHTML = "";
-
   let totalIncome = 0;
   let totalExpenses = 0;
-
   transactions.forEach((transaction) => {
-    const item = document.createElement("li");
-
-    item.innerHTML = `
-      <span>${transaction.description}</span>
+    const li = document.createElement("li");
+    li.innerHTML =
+     `<span>${transaction.description}</span>
       <strong>
         ${transaction.type === "income" ? "+" : "-"}
         ${transaction.amount} ETB
-      </strong>
-    `;
-
-    list.appendChild(item);
+      </strong>`;
+    list.appendChild(li);
 
     if (transaction.type === "income") {
       totalIncome += transaction.amount;
@@ -52,58 +46,51 @@ function render() {
   balance.textContent = `${totalIncome - totalExpenses} ETB`;
 }
 
-// Core Events
+// Events
 const form = document.querySelector("#transaction-form");
 const search = document.querySelector("#search");
+const descriptionFiled = document.querySelector("#description");
+const amountFiled = document.querySelector("#amount");
+const typeFiled = document.querySelector("#type");
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-  const description = document.querySelector("#description").value.trim();
-  const amount = Number(document.querySelector("#amount").value);
-  const type = document.querySelector("#type").value;
+  const description = descriptionFiled.value.trim();
+  const amount = Number(amountFiled.value);
+  const type = typeFiled.value;
 
   const transaction = {
-    id: Date.now(),
-    description,
-    amount,
-    type
+   id: Date.now(),
+   description,
+   amount,
+   type
   };
-
   transactions.push(transaction);
-
   saveData();
   render();
-
   form.reset();
 });
 
 search.addEventListener("input", () => {
   const searchTerm = search.value.toLowerCase();
-
   const filtered = transactions.filter((transaction) =>
     transaction.description.toLowerCase().includes(searchTerm)
   );
 
   const list = document.querySelector("#transaction-list");
-
   list.innerHTML = "";
-
   filtered.forEach((transaction) => {
-    const item = document.createElement("li");
-
-    item.innerHTML = `
-      <span>${transaction.description}</span>
-      <strong>
-        ${transaction.type === "income" ? "+" : "-"}
-        ${transaction.amount} ETB
-      </strong>
-    `;
-
-    list.appendChild(item);
+   const li = document.createElement("li");
+    li.innerHTML = 
+    `<span>${transaction.description}</span>
+     <strong>
+       ${transaction.type === "income" ? "+" : "-"}
+       ${transaction.amount} ETB
+     </strong>`;
+    list.appendChild(li);
   });
 });
-
 // Start the app
 loadData();
 render();

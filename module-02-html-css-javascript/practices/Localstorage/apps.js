@@ -1,8 +1,17 @@
-let members = [
-    { id: 1, name: "Mintesinot T.", years: 2000 },
-    { id: 2, name: "Rediet T.", years: 2005 },
-    { id: 3, name: "Hiwot T.", years: 2008 },
-]
+// const { func } = require("prop-types");
+
+let members = [ ]
+
+//we are always start by load data from storage
+// JSON.parse() also must used to load data from Localstroage 
+//what happen if we are not use [object, object] error show on the console
+
+// function loadMemberFromLocalStorag()
+const storedMembers = JSON.parse(localStorage.getItem("Resigister"));
+
+if(storedMembers) {
+    members = storedMembers;
+}
 
 // Select Element from the DOM
 
@@ -23,6 +32,8 @@ function renderMembers() {
         li.textContent = `${member.id} - ${member.name} is member since ${member.years} G.C`;
         myList.appendChild(li)
     });
+    
+    
 }
 renderMembers();
 
@@ -37,10 +48,12 @@ form.addEventListener("submit", (e)=>{
 
     members.push({id, name, years});
 
+    saveMembersToLocalstorag()
     renderMembers();
     form.reset();
 });
 
+//Select Element from the DOM
 const removeForm = document.querySelector("#myRemoveForm");
 const delIdField = document.querySelector("#removeId");
 
@@ -51,6 +64,18 @@ removeForm.addEventListener("submit", (e) => {
     let newMembers = members.filter((member) => member.id !==delId);
     members = newMembers;
 
+    saveMembersToLocalstorag()
     renderMembers();
     removeForm.reset();
 });
+
+//LocalStorage and SessionStorage 
+//JSON.stringify() alway use to upload/put data in Localstorage
+
+
+function saveMembersToLocalstorag() {
+    localStorage.setItem("Resigister", JSON.stringify(members));
+}
+
+
+

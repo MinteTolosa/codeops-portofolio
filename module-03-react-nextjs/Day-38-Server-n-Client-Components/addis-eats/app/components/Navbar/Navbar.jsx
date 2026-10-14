@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import CartLink from "../CartLink";
+import CartLink from "../CartLink/CartLink";
 
 export default function Navbar() {
   return (
