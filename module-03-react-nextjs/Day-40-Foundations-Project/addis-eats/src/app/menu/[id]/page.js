@@ -1,7 +1,7 @@
 import React from 'react'
 import { notFound } from 'next/navigation';
-import Image from "next/image";
 import Link from "next/link";
+import AddToCartButton from '@/app/components/AddToCartButton';
 
 async function getMenus() {
   const response = await fetch("https://addis-eats-backend.onrender.com/menu/");
@@ -26,46 +26,72 @@ export default async function SingleDishPage({ params }) {
   }
 
   return (
-    <main className="min-h-screen bg-[#17130f] px-6 py-12 text-[#f5efe6]">
-      <div className="mx-auto max-w-5xl">
-       <Link href="/menu" className="mb-8 inline-block text-sm text-[#9e9589] transition hover:text-[#c9a96e]" >
-         ← Back to Menu
-       </Link>
-       <div className="grid overflow-hidden rounded-2xl border border-[#6f6252]/30 bg-[#211b15] shadow-2xl md:grid-cols-2">
-        <div className="p-4 md:p-6">
-        <Image src={menu.image} alt={menu.nameEn} width={600} height={600}
-          className="h-80 w-full rounded-xl object-cover md:h-[450px]" />
+    <main className="min-h-screen bg-gray-50 px-6 py-12">
+      <Link href="/menu"
+        className="mb-6 inline-block text-sm font-medium text-gray-600 hover:text-black">
+          ← Back to Menu
+      </Link>
+      <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-sm">
+      <p className="mb-2 text-sm font-medium text-green-700">
+        {menu.category}
+      </p>
+      <h1 className="text-4xl font-bold text-gray-900">
+        {menu.nameEn}
+      </h1>
+      <p className="mt-2 text-xl text-gray-500">
+        {menu.nameAm}
+      </p>
+      <p className="mt-6 text-gray-600">
+        {menu.description}
+      </p>
+      <p className="mt-6 text-2xl font-bold text-green-700">
+        {menu.priceETB} ETB
+      </p>
+      <div className="mt-6">
+        <AddToCartButton menu={menu} />
+      </div>
+      <div className="mt-8 grid gap-4 sm:grid-cols-3">
+        <div className="mt-10">
+        <div>
+          <p className="text-sm text-gray-500">
+            Spice Level
+          </p>
+          <p className="font-semibold">
+            {menu.spiceLevel}
+          </p>
         </div>
-        <div className="flex flex-col justify-center p-7 md:p-10">
-          <p className="text-sm uppercase tracking-[0.25em] text-[#c9a96e]">
-              {menu.category}
+        <div>
+          <p className="text-sm text-gray-500">
+            Servings
           </p>
-          <h1 className="mt-3 text-4xl font-bold md:text-5xl">
-              {menu.nameEn}
-          </h1>
-          <p className="mt-5 leading-relaxed text-[#b8afa3]">
-           Enjoy the rich flavors of our {menu.nameEn}, prepared with
-           traditional Ethiopian ingredients and served with care.
+          <p className="font-semibold">
+            {menu.servings}
           </p>
-          <p className="mt-7 text-3xl font-semibold text-[#c9a96e]">
-            {menu.priceETB} ETB
-          </p>
-          <div className="mt-5">
-            {menu.spiceLevel 
-          ? ( <span className="rounded-full border border-[#d98b6b]/40 bg-[#d98b6b]/10 px-4 py-2 text-sm text-[#d98b6b]">
-            🌶️ Spicy
-              </span> ) 
-          : ( <span className="rounded-full border border-[#a9b88f]/40 bg-[#a9b88f]/10 px-4 py-2 text-sm text-[#a9b88f]">
-             🌿 Mild
-              </span>
-            )}
-          </div>
-          <button className="mt-8 rounded-md bg-[#c9a96e] px-6 py-3 font-semibold text-[#17130f] transition hover:bg-[#dfc38d]">
-              Add to Cart
-          </button>
+        </div>
+        <div className="mt-8 flex flex-wrap gap-3">
+          {menu.isSpecial && (
+            <span className="rounded-full bg-yellow-100 px-4 py-2 text-sm font-medium text-yellow-800">
+              Special
+            </span>
+          )}
+          {menu.isFasting && (
+            <span className="rounded-full bg-green-100 px-4 py-2 text-sm font-medium text-green-800">
+              Fasting
+            </span>
+          )}
+        </div>
+      <div className="mt-10">
+        <h2 className="mb-4 text-2xl font-bold">
+          Ingredients
+        </h2>
+        <ul className="list-disc space-y-2 pl-6 text-gray-600">
+          {menu.ingredients.map((ingredient) => (
+            <li key={ingredient}> {ingredient}  </li> ))}
+        </ul>
+      </div>
         </div>
       </div>
     </div>
   </main>
-  )
+);
 }
