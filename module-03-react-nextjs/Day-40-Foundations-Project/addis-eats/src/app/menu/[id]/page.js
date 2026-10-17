@@ -3,13 +3,34 @@ import { notFound } from 'next/navigation';
 import Link from "next/link";
 import AddToCartButton from '@/app/components/AddToCartButton';
 
+
 async function getMenus() {
-  const response = await fetch("https://addis-eats-backend.onrender.com/menu/");
-  if (!response.ok) {
-    throw new Error("Failed to fetch menus");
+  const url = "https://addis-eats-backend.onrender.com/menu/";
+  let lastError;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const response = await fetch(url, {
+        cache: "force-cache",
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to fetch menus: ${response.status}`);
+      }
+      const result = await response.json();
+      if (!Array.isArray(result.data)) {
+        throw new Error("The API did not return a valid menu array.");
+      }
+      return result.data;
+    } catch (error) { lastError = error;
+      console.error(
+        `Menu fetch attempt ${attempt} failed:`, error
+      );
+      if (attempt < 3) {
+        await new Promise((resolve) => setTimeout(resolve, 1500)
+        );
+      }
+    }
   }
-  const result = await response.json();
-  return result.data;
+  throw lastError;
 }
 
 export async function generateStaticParams() {
@@ -48,7 +69,7 @@ export default async function SingleDishPage({ params }) {
         {menu.priceETB} ETB
       </p>
       <div className="mt-6">
-        <AddToCartButton menu={menu} />
+      <AddToCartButton menu={menu} />
       </div>
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <div className="mt-10">

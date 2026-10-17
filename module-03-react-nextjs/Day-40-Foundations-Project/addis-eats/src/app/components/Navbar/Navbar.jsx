@@ -20,7 +20,7 @@ function Navbar() {
           <Link href='/cart' className="text-[#f5efe6] transition hover:text-[#c9a96e]">
             Cart
           </Link>
-          <Link href="/Checkout" className="text-[#f5efe6] transition hover:text-[#c9a96e]" >
+          <Link href="/checkout" className="text-[#f5efe6] transition hover:text-[#c9a96e]" >
             Checkout
           </Link>
         </div>
