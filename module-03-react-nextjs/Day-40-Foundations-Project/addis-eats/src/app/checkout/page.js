@@ -13,7 +13,7 @@ export default function CheckoutPage() {
       <h1 className="mb-6 text-3xl font-bold">
         Checkout
       </h1>
-      <CheckoutForm />
+      <CheckoutForm cartItems={cartItems} />
       {cartItems.length === 0 ? (
       <div>
         <p className="mb-4 text-gray-500">
@@ -46,9 +46,6 @@ export default function CheckoutPage() {
           <span>Order Total</span>
           <span>{total} ETB</span>
           </div>
-          <button className="mt-6 w-full rounded-lg bg-black px-6 py-3 font-semibold text-white hover:bg-gray-800" >
-            Place Order
-          </button>
         </div>
       )}
     </main>

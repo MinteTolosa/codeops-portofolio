@@ -1,21 +1,24 @@
 "use server";
-import { z } from "zod";
-
-import { revalidatePath } from "next/cache";
-
-
-const checkoutSchema = z.object({
-  customerName: z.string().trim().min(2, "Enter at least 2 characters for your name."),
-  phone: z.string().trim().min(9, "Enter a valid phone number."),
-});
+import { orderSchema } from "@/lib/validations";
 
 export async function placeOrder(previousState, formData) {
- 
-  const formValues = { customerName: formData.get("customerName"),
-    phone: formData.get("phone"),
-  };
+  const customerName = formData.get("customerName");
+  const phone = formData.get("phone");
+  let items;
+  
+  try {
+    items = JSON.parse(formData.get("items") || "[]");
+  } catch { return {
+      success: false,
+      message: "Invalid cart data. Please refresh and try again.",
+    };
+  }
 
-  const result = checkoutSchema.safeParse(formValues);
+  const result = orderSchema.safeParse({
+    customerName,
+    phone,
+    items,
+  });
 
   if (!result.success) {
     return {
@@ -23,10 +26,9 @@ export async function placeOrder(previousState, formData) {
       message: result.error.issues[0].message,
     };
   }
-  revalidatePath("/menu");
 
   return {
     success: true,
-    message: `Thank you, ${result.data.customerName}! Your details are valid.`,
+    message: `Thank you, ${result.data.customerName}! Your order details passed validation.`,
   };
 }

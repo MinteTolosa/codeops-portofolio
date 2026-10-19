@@ -1,19 +1,11 @@
-import { z } from "zod";
 
-const orderSchema = z.object({
-  customerName: z.string().min(2, "Name is required"),
-  phone: z.string().min(9, "Enter a valid phone number"),
-  items: z.array( z.object({
-      dishId: z.string(),
-      quantity: z.number().int().positive(),
-    })
-  ).min(1, "Your cart is empty"),
-});
+import { orderSchema } from "@/lib/validations";
 
 export async function POST(request) {
   try {
     const body = await request.json();
     const result = orderSchema.safeParse(body);
+
     if (!result.success) {
       return Response.json(
         {
@@ -23,6 +15,7 @@ export async function POST(request) {
         { status: 422 }
       );
     }
+
     return Response.json(
       {
         message: "Order data is valid",
@@ -30,7 +23,7 @@ export async function POST(request) {
       },
       { status: 201 }
     );
-  } catch (error) {
+  } catch {
     return Response.json(
       { error: "Invalid request body" },
       { status: 400 }
