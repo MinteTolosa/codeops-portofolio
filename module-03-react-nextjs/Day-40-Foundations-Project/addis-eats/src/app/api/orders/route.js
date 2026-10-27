@@ -1,13 +1,16 @@
 
+import { NextResponse } from "next/server";
 import { orderSchema } from "@/lib/validations";
+import { createOrder } from "@/lib/db";
 
+// Day 39 — API Routes and Request Validation
 export async function POST(request) {
   try {
     const body = await request.json();
     const result = orderSchema.safeParse(body);
 
     if (!result.success) {
-      return Response.json(
+      return NextResponse.json(
         {
           error: "Invalid order",
           fieldErrors: result.error.flatten().fieldErrors,
@@ -16,15 +19,17 @@ export async function POST(request) {
       );
     }
 
-    return Response.json(
+    const order = await createOrder(result.data);
+
+    return NextResponse.json(
       {
-        message: "Order data is valid",
-        order: result.data,
+        message: "Order created successfully",
+        order,
       },
       { status: 201 }
     );
   } catch {
-    return Response.json(
+    return NextResponse.json(
       { error: "Invalid request body" },
       { status: 400 }
     );
