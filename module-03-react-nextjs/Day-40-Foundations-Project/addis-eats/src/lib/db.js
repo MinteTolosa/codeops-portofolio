@@ -1,4 +1,9 @@
 
+
+import { getSession } from "@/lib/session";
+
+export { getSession };
+
 const mockDishes = [
   {
     id: "dish_1",
@@ -40,12 +45,6 @@ const mockDishes = [
 
 const mockOrders = [];
 
-const mockSessionUser = {
-  id: "user_addis_101",
-  name: "Abebe Bikila",
-  email: "abebe@example.com",
-};
-
 export const db = {
   dish: {
     findMany: async () => [...mockDishes],
@@ -66,7 +65,6 @@ export async function createOrder(data) {
     id: `ord_${Math.floor(100 + Math.random() * 900)}`,
     ...data,
     status: "PENDING",
-    userId: mockSessionUser.id,
     createdAt: new Date().toISOString(),
   };
 
@@ -91,6 +89,3 @@ export async function markCancelled(id) {
   return order;
 }
 
-export async function getSession() {
-  return mockSessionUser;
-}

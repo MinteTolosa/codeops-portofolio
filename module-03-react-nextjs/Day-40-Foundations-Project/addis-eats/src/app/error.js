@@ -1,11 +1,24 @@
-'use client';
-import React from 'react';
 
-export default function error() {
+"use client";
+
+// Day 42 — Error Boundary Recovery
+
+export default function Error({ error, reset }) {
   return (
-    <div>
-        <h2>There is Some error please try again</h2>
-        <button>Try again</button>
-    </div>
-  )
+    <main className="mx-auto max-w-xl space-y-4 px-6 py-16">
+      <h2 className="text-2xl font-semibold">
+        Something went wrong.
+      </h2>
+
+      <p>Please try again.</p>
+
+      <button
+        type="button"
+        onClick={() => reset()}
+        className="rounded-lg border px-4 py-2"
+      >
+        Try again
+      </button>
+    </main>
+  );
 }
