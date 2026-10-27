@@ -2,18 +2,12 @@
 import { useActionState } from "react";
 import { placeOrder } from "./actions";
 
-const initialState = {
-  success: false,
-  message: "",
-};
+const initialState = { success: false, message: "", };
 export default function CheckoutForm({ cartItems }) {
   const [state, formAction, isPending] = useActionState(
-   placeOrder,
-   initialState
-  );
+   placeOrder, initialState );
   const items = cartItems.map((item) => ({dishId: String(item.id),
-   quantity: item.quantity,
-  }));
+   quantity: item.quantity, }));
   return (
     <form action={formAction} className="space-y-4">
       <input type="hidden" name="items" value={JSON.stringify(items)} />
@@ -21,7 +15,7 @@ export default function CheckoutForm({ cartItems }) {
         <label htmlFor="customerName">Full Name</label>
         <input id="customerName" name="customerName" type="text"
           required
-          minLength={2}
+          minLength={4}
           className="block w-full rounded-lg border p-3"/>
       </div>
       <div>
@@ -35,8 +29,7 @@ export default function CheckoutForm({ cartItems }) {
         {isPending ? "Validating..." : "Validate Order"}
       </button>
       {state.message && (
-       <p role="status"
-          className={state.success ? "text-green-700" : "text-red-600"} >
+       <p role="status" className={state.success ? "text-green-700" : "text-red-600"} >
           {state.message}
         </p>
       )}

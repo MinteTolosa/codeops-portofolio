@@ -13,7 +13,6 @@ export default function CheckoutPage() {
       <h1 className="mb-6 text-3xl font-bold">
         Checkout
       </h1>
-      <CheckoutForm cartItems={cartItems} />
       {cartItems.length === 0 ? (
       <div>
         <p className="mb-4 text-gray-500">
@@ -28,8 +27,7 @@ export default function CheckoutPage() {
         <div className="space-y-4">
 
         {cartItems.map((item) => (
-        <div key={item.id}
-          className="flex justify-between border-b pb-3">
+        <div key={item.id} className="flex justify-between border-b pb-3">
           <div>
            <h2 className="font-semibold"> {item.nameEn} </h2>
            <p className="text-sm text-gray-500">
@@ -46,6 +44,7 @@ export default function CheckoutPage() {
           <span>Order Total</span>
           <span>{total} ETB</span>
           </div>
+           <CheckoutForm cartItems={cartItems} />
         </div>
       )}
     </main>
