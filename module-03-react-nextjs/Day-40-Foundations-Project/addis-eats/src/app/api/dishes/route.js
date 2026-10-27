@@ -1,21 +1,22 @@
 
-export async function GET() {
-  try {
-    const response = await fetch(process.env.MENU_API_URL);
-    
-    if (!response.ok) {
-      return Response.json(
-        { error: "Failed to fetch menu data" },
-        { status: 502 }
-      );
-    }
-    const result = await response.json();
+import { NextResponse } from "next/server";
+import { db } from "@/lib/db";
 
-    return Response.json(result.data);
-  } catch (error) {
-    return Response.json(
-      { error: "Unable to connect to the menu service" },
-      { status: 502 }
-    );
-  }
+// Day 41 — Search API and Query Parameters
+
+export async function GET(request) {
+  const { searchParams } = new URL(request.url);
+  const query = (searchParams.get("q") || "").trim().toLowerCase();
+
+  const dishes = await db.dish.findMany();
+
+  const filteredDishes = query
+    ? dishes.filter((dish) =>
+        [dish.name, dish.description, dish.category]
+          .filter(Boolean)
+          .some((value) => value.toLowerCase().includes(query))
+      )
+    : dishes;
+
+  return NextResponse.json(filteredDishes);
 }
