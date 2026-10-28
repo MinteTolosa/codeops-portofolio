@@ -12,11 +12,8 @@ export default function Error({ error, reset }) {
 
       <p>Please try again.</p>
 
-      <button
-        type="button"
-        onClick={() => reset()}
-        className="rounded-lg border px-4 py-2"
-      >
+      <button type="button" onClick={() => reset()}
+        className="rounded-lg border px-4 py-2">
         Try again
       </button>
     </main>

@@ -53,7 +53,7 @@ export default async function SingleDishPage({ params }) {
           ← Back to Menu
       </Link>
       <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-sm">
-      <p className="mb-2 text-sm font-medium text-green-700">
+      <p className="mb-2 text-sm font-medium text-[#c9a96e]">
         {menu.category}
       </p>
       <h1 className="text-4xl font-bold text-gray-900">
@@ -65,7 +65,7 @@ export default async function SingleDishPage({ params }) {
       <p className="mt-6 text-gray-600">
         {menu.description}
       </p>
-      <p className="mt-6 text-2xl font-bold text-green-700">
+      <p className="mt-6 text-2xl font-bold text-[#c9a96e]">
         {menu.priceETB} ETB
       </p>
       <div className="mt-6">

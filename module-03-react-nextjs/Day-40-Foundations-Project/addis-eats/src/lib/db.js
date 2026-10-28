@@ -1,6 +1,6 @@
-
-
 import { getSession } from "@/lib/session";
+import { randomUUID } from "node:crypto";
+import { hashPassword } from "@/lib/auth";
 
 export { getSession };
 
@@ -44,6 +44,35 @@ const mockDishes = [
 ];
 
 const mockOrders = [];
+
+// Day 42 — Temporary mock user storage
+const mockUsers = [];
+
+export async function findUserByEmail(email) {
+  return mockUsers.find((user) => user.email === email) || null;
+}
+
+export async function createUser({ name, email, password }) {
+  const normalizedEmail = email.trim().toLowerCase();
+
+  const existingUser = await findUserByEmail(normalizedEmail);
+
+  if (existingUser) {
+    return null;
+  }
+
+  const user = {
+    id: randomUUID(),
+    name: name.trim(),
+    email: normalizedEmail,
+    passwordHash: hashPassword(password),
+    role: "customer",
+  };
+
+  mockUsers.push(user);
+
+  return user;
+}
 
 export const db = {
   dish: {

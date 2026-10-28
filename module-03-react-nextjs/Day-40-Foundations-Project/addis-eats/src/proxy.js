@@ -4,7 +4,8 @@ import { verifySessionToken } from "@/lib/auth";
 
 // Day 42 — Route Protection and Role Authorization
 
-export function middleware(request) {
+export function proxy(request) {
+  
   const { pathname, search } = request.nextUrl;
   const token = request.cookies.get("addis_eats_session")?.value;
   const user = verifySessionToken(token);
@@ -25,18 +26,21 @@ export function middleware(request) {
     return NextResponse.redirect(new URL("/orders", request.url));
   }
 
-  if (pathname === "/signin" && user) {
-    return NextResponse.redirect(new URL("/orders", request.url));
-  }
+  if (
+    (pathname === "/signin" || pathname === "/signup") &&
+    user
+  ) {
+  return NextResponse.redirect(new URL("/home", request.url));
+}
 
   return NextResponse.next();
 }
-
 export const config = {
   matcher: [
     "/checkout/:path*",
     "/orders/:path*",
     "/kitchen/:path*",
     "/signin",
+    "/signup",
   ],
 };

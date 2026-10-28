@@ -1,6 +1,7 @@
 
 import "server-only";
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { randomBytes, scryptSync } from "node:crypto";
 
 // Day 42 — Signed Session Tokens
 
@@ -76,5 +77,34 @@ export function verifySessionToken(token) {
     };
   } catch {
     return null;
+  }
+}
+// Day 42 — Password Hashing
+
+export function hashPassword(password) {
+  const salt = randomBytes(16).toString("hex");
+
+  const hash = scryptSync(password, salt, 64).toString("hex");
+
+  return `${salt}:${hash}`;
+}
+
+export function verifyPassword(password, storedHash) {
+  if (typeof storedHash !== "string") return false;
+
+  const [salt, hash] = storedHash.split(":");
+
+  if (!salt || !hash) return false;
+
+  try {
+    const expected = Buffer.from(hash, "hex");
+    const actual = scryptSync(password, salt, 64);
+
+    return (
+      expected.length === actual.length &&
+      timingSafeEqual(expected, actual)
+    );
+  } catch {
+    return false;
   }
 }

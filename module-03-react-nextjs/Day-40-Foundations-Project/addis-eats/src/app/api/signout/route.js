@@ -1,6 +1,6 @@
 
 import { NextResponse } from "next/server";
-import { SESSION_COOKIE } from "@/lib/session";
+import { SESSION_COOKIE } from "../../../lib/session";
 
 // Day 42 — Sign Out
 
