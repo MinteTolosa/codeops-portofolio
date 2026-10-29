@@ -73,35 +73,22 @@ export default function SignInForm() {
 
       <label className="block">
         <span className="mb-1 block">Email</span>
-        <input
-          type="email"
-          autoComplete="username"
-          required
-          value={email}
+        <input type="email" autoComplete="username" required value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="w-full rounded-lg border p-3"
-        />
+          className="w-full rounded-lg border p-3"/>
       </label>
 
       <label className="block">
         <span className="mb-1 block">Password</span>
-        <input
-          type="password"
-          autoComplete="current-password"
-          required
-          value={password}
+        <input type="password" autoComplete="current-password" required value={password}
           onChange={(event) => setPassword(event.target.value)}
-          className="w-full rounded-lg border p-3"
-        />
+          className="w-full rounded-lg border p-3"/>
       </label>
 
       {message && <p role="alert">{message}</p>}
 
-      <button
-        type="submit"
-        disabled={pending}
-        className="w-full rounded-lg px-4 py-3"
-      >
+      <button type="submit" disabled={pending}
+        className="w-full rounded-lg px-4 py-3" >
         {pending ? "Signing in..." : "Sign in"}
       </button>
     </form>

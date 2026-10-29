@@ -62,7 +62,7 @@ export default function NavbarAuth({ user }) {
 
       <button type="button"  onClick={handleSignOut} disabled={loading}
         className="rounded-md border border-[#6f6252] px-5 py-3 font-semibold text-[#f5efe6] transition hover:border-[#c9a96e] hover:text-[#c9a96e] disabled:cursor-not-allowed disabled:opacity-50" >
-        {loading ? "Signing out..." : "Sign out"}
+        {loading ? "Sign out" : "Signing out..."}
       </button>
 
       {error && (

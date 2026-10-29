@@ -30,7 +30,7 @@ export function proxy(request) {
     (pathname === "/signin" || pathname === "/signup") &&
     user
   ) {
-  return NextResponse.redirect(new URL("/home", request.url));
+  return NextResponse.redirect(new URL("/", request.url));
 }
 
   return NextResponse.next();

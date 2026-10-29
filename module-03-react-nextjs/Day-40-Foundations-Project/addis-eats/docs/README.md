@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Addis Eats
+
+A full-stack Ethiopian food ordering application built as part of the IBT CodeOps Module 3 React and Next.js training.
+
+## About the Project
+
+Addis Eats allows users to explore Ethiopian dishes, view dish details, manage a shopping cart, and place orders. The project demonstrates modern Next.js development concepts, including routing, data fetching, authentication, and performance optimization.
+
+## Features
+
+- Browse the food menu and view individual dishes.
+- Add dishes to the shopping cart.
+- Proceed to checkout and place orders.
+- Sign in and sign up.
+- View order history and order status.
+- Provide a staff-only kitchen interface.
+- Validate data and protect private routes.
+
+## Technologies
+
+- Next.js
+- React
+- JavaScript
+- Tailwind CSS
+- Zustand, where used for client-side state management
+- Zod, where used for data validation
+- SWR or TanStack Query, where implemented for client-side data fetching
+
+## Project Routes
+
+ Route =================================================== Purpose 
+
+ `/`       ...........................................Home page 
+`/menu` .............................................Browse dishes 
+ `/menu/[id]` ........................................ View dish details 
+ `/cart` ............................................... Manage cart items 
+ `/checkout` ............................................ Place an order
+ `/orders` ............................................... View orders
+ `/kitchen` ............................................ Staff kitchen interface 
+ `/signin` ............................................... Sign in 
+ `/signup` ............................................... Create an account
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js
+- npm
+- Git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Clone the repository, navigate into the project directory, and install dependencies.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+bash
+npm install
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a `.env.local` file in the project root and configure the environment variables required by the application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Never commit `.env.local` or real credentials to GitHub. Refer to `.env.example

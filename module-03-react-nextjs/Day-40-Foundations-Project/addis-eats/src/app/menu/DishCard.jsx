@@ -5,7 +5,7 @@ import Link from 'next/link';
 function DishCard({menu}) {
   return (
     <Link key={menu.id} href={`/menu/${menu.slug}`}
-      className="rounded-xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+      className="rounded-xl p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <div className='overflow-hidden round-x1 border border-[#6f6252]'>
         <div className='p-5'>
           <Image src={menu.image} alt='menu.nameEn' width={600} height={550}/>

@@ -33,10 +33,12 @@ export default function Home() {
         </div>
         <div className="flex justify-center">
          <div className="rounded-2xl border border-[#6f6252]/40 bg-[#211b15] p-3 shadow-2xl">
-          <Image src="/images/bozena-shiro.jpg" alt="Traditional Ethiopian food"
-            width={550}
-            height={550}
-            className="h-[350px] w-full max-w-[500px] rounded-xl object-cover md:h-[450px]"/>
+          
+      <Image src="/images/bozena-shiro.jpg" alt="Traditional Ethiopian food"
+        width={550} height={550} priority
+        sizes="(max-width: 768px) 100vw, 500px"
+        className="h-[350px] w-full max-w-[500px] rounded-xl object-cover md:h-[450px]" />
+        
         </div>
         </div>
       </div>
