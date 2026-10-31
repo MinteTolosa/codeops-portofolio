@@ -11,6 +11,21 @@ async function getMenus() {
     const result = await response.json();
     return result.data;
 }
+
+export const metadata = {
+  title: "Menu",
+  description:
+    "Explore Ethiopian dishes, browse prices, and discover your favorites on Addis Eats.",
+  alternates: {
+    canonical: "/menu",
+  },
+  openGraph: {
+    title: "Explore the Menu | Addis Eats",
+    description: "Discover delicious Ethiopian dishes on Addis Eats.",
+    url: "/menu",
+  },
+};
+
 export default async function MenuPage() {
   const menus = await getMenus();
 return (

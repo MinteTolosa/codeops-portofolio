@@ -62,7 +62,7 @@ export function verifySessionToken(token) {
     if (
       !user.id ||
       !user.email ||
-      !["customer", "staff"].includes(user.role) ||
+      !["customer", "staff", "admin"].includes(user.role) || 
       typeof user.expiresAt !== "number" ||
       user.expiresAt <= Date.now()
     ) {

@@ -18,6 +18,9 @@ export async function POST(request) {
         { status: 400 }
       );
     }
+    const isDemoAdmin =
+      email === process.env.DEMO_ADMIN_EMAIL?.trim().toLowerCase() &&
+      password === process.env.DEMO_ADMIN_PASSWORD;
     const isDemoStaff =
       email === process.env.DEMO_STAFF_EMAIL?.trim().toLowerCase() 
       && password === process.env.DEMO_STAFF_PASSWORD;
@@ -27,22 +30,29 @@ export async function POST(request) {
 
     let user = null;
 
-    if (isDemoStaff) { user = {
-        id: "demo_staff",
-        name: "Demo Kitchen Staff",
-        email,
-        role: "staff",
-      };
-    }
-    else if (isDemoCustomer) { user = {
-        id: "demo_customer",
-        name: "Demo Customer",
-        email,
-        role: "customer",
-      };
-    }
-    else {
-      const registeredUser = await findUserByEmail(email);
+    if (isDemoAdmin) {
+    user = {
+      id: "demo_admin",
+      name: "Admin",
+      email,
+      role: "admin",
+    };
+  } else if (isDemoStaff) {
+    user = {
+      id: "demo_staff",
+      name: "Staff",
+      email,
+      role: "staff",
+    };
+  } else if (isDemoCustomer) {
+    user = {
+      id: "demo_customer",
+      name: "Customer",
+      email,
+      role: "customer",
+    };
+  } else {
+    const registeredUser = await findUserByEmail(email);
 
       if (
         registeredUser &&

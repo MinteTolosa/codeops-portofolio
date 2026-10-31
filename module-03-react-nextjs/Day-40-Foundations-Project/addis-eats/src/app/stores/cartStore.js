@@ -20,6 +20,9 @@ const useCartStore = create(persist((set) => ({
         cartItems: [...state.cartItems, { ...menu, quantity: 1 }],
       };
     }),
+
+  clearCart: () => set({ cartItems: [] }),
+  
   removeFromCart: (id) => set((state) => ({
     cartItems: state.cartItems.filter((item) => item.id !== id),
   })),

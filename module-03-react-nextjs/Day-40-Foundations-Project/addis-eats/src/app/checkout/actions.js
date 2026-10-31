@@ -1,4 +1,3 @@
-
 "use server";
 
 import { revalidatePath } from "next/cache";
@@ -6,12 +5,13 @@ import { orderSchema } from "@/lib/validations";
 import { createOrder, getSession } from "@/lib/db";
 
 export async function placeOrder(previousState, formData) {
-  const customerName = formData.get("customerName");
-  const phone = formData.get("phone");
-  let items;
-
+  const customerName = String(formData.get("customerName") || "").trim();
+  const phone = String(formData.get("phone") || "").trim();
+  const neighborhood = String(formData.get("neighborhood") || "").trim();
+  
+  let rawItems = [];
   try {
-    items = JSON.parse(formData.get("items") || "[]");
+    rawItems = JSON.parse(formData.get("items") || "[]");
   } catch {
     return {
       success: false,
@@ -19,9 +19,16 @@ export async function placeOrder(previousState, formData) {
     };
   }
 
+  // Ensure dishId and quantity are correctly formatted for Zod
+  const items = rawItems.map((item) => ({
+    dishId: String(item.dishId || item.id || ""),
+    quantity: Number(item.quantity || 1),
+  }));
+
   const result = orderSchema.safeParse({
     customerName,
     phone,
+    neighborhood,
     items,
   });
 
@@ -31,6 +38,7 @@ export async function placeOrder(previousState, formData) {
       message: result.error.issues[0].message,
     };
   }
+  //console.log("Validating payload:", { customerName, phone, neighborhood, items });
 
   const user = await getSession();
 

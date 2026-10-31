@@ -37,6 +37,60 @@ export async function generateStaticParams() {
   const menus = await getMenus();
   return menus.map((menu) => ({ id: menu.slug, }));
 }
+
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const menus = await getMenus();
+
+  const menu = menus.find((item) => item.slug === id);
+
+  if (!menu) {
+    return {
+      title: "Dish Not Found | Addis Eats",
+      description: "This dish could not be found on Addis Eats.",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  return {
+    title: `${menu.nameEn} | Addis Eats`,
+    description: menu.description,
+    alternates: {
+      canonical: `/menu/${menu.slug}`,
+    },
+    openGraph: {
+      title: `${menu.nameEn} | Addis Eats`,
+      description: menu.description,
+      url: `/menu/${menu.slug}`,
+      type: "website",
+    },
+  };
+}
+function DishJsonLd({ menu }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MenuItem",
+    name: menu.nameEn,
+    description: menu.description,
+    offers: {
+      "@type": "Offer",
+      price: String(menu.priceETB),
+      priceCurrency: "ETB",
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+      }}
+    />
+  );
+}
 export default async function SingleDishPage({ params }) {
   const { id } = await params;
   const menus = await getMenus();
@@ -48,9 +102,10 @@ export default async function SingleDishPage({ params }) {
 
   return (
     <main className="min-h-screen bg-gray-50 px-6 py-12">
+      <DishJsonLd menu={menu} />
       <Link href="/menu"
         className="mb-6 inline-block text-sm font-medium text-gray-600 hover:text-black">
-          ← Back to Menu
+        ← Back to Menu
       </Link>
       <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow-sm">
       <p className="mb-2 text-sm font-medium text-[#c9a96e]">

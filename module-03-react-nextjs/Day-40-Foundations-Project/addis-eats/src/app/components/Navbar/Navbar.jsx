@@ -29,11 +29,16 @@ export default async function Navbar() {
           </Link>
           <Link href="/orders" className="text-[#f5efe6] transition hover:text-[#c9a96e]" >
             Orders
+          </Link> 
+          {(user?.role === "admin" || user?.role === "staff") && (
+          <Link href="/kitchen"
+            className="text-[#c9a96e] hover:text-[#dfc38d] transition" >
+            Kitchen
           </Link>
-
-          {user?.role === "staff" && (
-            <Link href="/kitchen" className="text-[#c9a96e] transition hover:text-[#dfc38d]" >
-              Kitchen
+          )}
+          {user?.role === "admin" && (
+            <Link href="/dashboard" className="text-[#c9a96e] transition hover:text-[#dfc38d]" >
+              Dashboard
             </Link>
           )}
           <NavbarAuth user={user} />

@@ -1,6 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Home",
+  description:
+    "Welcome to Addis Eats. Discover Ethiopian dishes and find your next favorite meal.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {  
   return (

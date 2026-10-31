@@ -11,10 +11,11 @@ export function proxy(request) {
   const user = verifySessionToken(token);
 
   const isKitchen = pathname.startsWith("/kitchen");
+  const isDashboard = pathname.startsWith("/dashboard");
   const isProtected =
-    pathname.startsWith("/checkout") ||
-    pathname.startsWith("/orders") ||
-    isKitchen;
+  pathname.startsWith("/checkout") ||
+  pathname.startsWith("/orders") ||
+  isKitchen || isDashboard;
 
   if (isProtected && !user) {
     const signInUrl = new URL("/signin", request.url);
@@ -22,9 +23,15 @@ export function proxy(request) {
     return NextResponse.redirect(signInUrl);
   }
 
-  if (isKitchen && user?.role !== "staff") {
+  if (
+    isKitchen &&
+    !["staff", "admin"].includes(user?.role)
+  ) {
     return NextResponse.redirect(new URL("/orders", request.url));
   }
+
+  if (isDashboard && user?.role !== "admin") {
+  return NextResponse.redirect(new URL("/orders", request.url)); }
 
   if (
     (pathname === "/signin" || pathname === "/signup") &&
@@ -38,6 +45,7 @@ export function proxy(request) {
 export const config = {
   matcher: [
     "/checkout/:path*",
+    "/dashboard/:path*",
     "/orders/:path*",
     "/kitchen/:path*",
     "/signin",
