@@ -112,25 +112,30 @@ export default async function OrderTable({ orders, searchParams = {} }) {
           </thead>
 
           <tbody>
-          {pageOrders.map((order) => (
-            <tr key={order.id} className="border-t">
-              <td className="px-4 py-3">{formatDate(order.createdAt)}</td>
-              <td className="px-4 py-3">{order.customerName ?? "—"}</td>
-              <td className="px-4 py-3">{order.status ?? "Unknown"}</td>
-              <td className="px-4 py-3">{order.id}</td>
-              <td className="px-4 py-3">
-                {Array.isArray(order.items) ? order.items.length : 0}
+            {pageOrders.map((order) => (
+              <tr key={order.id} className="border-t">
+                <td className="px-4 py-3">{formatDate(order.createdAt)}</td>
+                <td className="px-4 py-3">{order.customerName ?? "—"}</td>
+                <td className="px-4 py-3">{order.status ?? "Unknown"}</td>
+                <td className="px-4 py-3">{order.id}</td>
+                <td className="px-4 py-3">
+                  {Array.isArray(order.items) ? order.items.length : 0}
+                </td>
+                <td className="px-4 py-3">
+                <div className="flex flex-col gap-2">
+                  <Link href={`/track/${order.id}`}
+                    className="text-[#c9a96e] hover:underline font-medium"  >
+                    Track Order
+                  </Link>
+
+                  {order.status === "PENDING" && (
+                    <CancelOrderButton orderId={order.id} />
+                  )}
+                </div>
               </td>
-              <td className="px-4 py-3">
-                {order.status === "PENDING" ? (
-                  <CancelOrderButton orderId={order.id} />
-                ) : (
-                  <span className="text-[#9e9589]">No action</span>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
 

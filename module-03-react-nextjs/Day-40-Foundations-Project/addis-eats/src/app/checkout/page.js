@@ -24,16 +24,14 @@ export default function CheckoutPage() {
         {cartItems.length === 0 ? (
           <div className="rounded-2xl border border-[#6f6252]/40 bg-[#211b15] p-12 text-center shadow-2xl space-y-4">
             <p className="text-lg text-[#b8afa3]">Your cart is empty.</p>
-            <Link
-              href="/menu"
-              className="inline-block text-[#c9a96e] font-semibold hover:underline"
-            >
+            <Link href="/menu"
+              className="inline-block text-[#c9a96e] font-semibold hover:underline" >
               Browse Our Menu
             </Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            {/* Order Items Preview */}
+          
             <div className="rounded-2xl border border-[#6f6252]/40 bg-[#211b15] p-6 shadow-2xl space-y-4">
               <h2 className="font-bold text-lg text-[#f5efe6] border-b border-[#6f6252]/40 pb-3">
                 Order Summary
@@ -58,7 +56,6 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            {/* Checkout Form */}
             <div>
               <CheckoutForm cartItems={cartItems} />
             </div>

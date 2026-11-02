@@ -45,14 +45,13 @@ export default function Home() {
       <Image src="/images/bozena-shiro.jpg" alt="Traditional Ethiopian food"
         width={550} height={550} priority
         sizes="(max-width: 768px) 100vw, 500px"
-        className="h-[350px] w-full max-w-[500px] rounded-xl object-cover md:h-[450px]" />
-        
+        className="h-[350px] w-full max-w-[500px] rounded-xl object-cover md:h-[450px]" />        
         </div>
         </div>
       </div>
     </section>
 
-  <div className="mx-auto max-w-6xl border-t border-[#6f6252]/30" />
+  <div className="mx-auto max-w-6xl bg-[#17130f] border-t border-[#6f6252]/30" />
    <section className="px-6 py-16">
     <div className="mx-auto grid max-w-5xl gap-10 text-center md:grid-cols-3">
       <div>

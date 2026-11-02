@@ -29,7 +29,7 @@ export const metadata = {
 export default async function MenuPage() {
   const menus = await getMenus();
 return (
-  <main className="min-h-screen bg-[#17130f] px-6 py-12 text-[#f5efe6]">
+  <main className="min-h-screen flex-1 bg-[#17130f] px-6 py-12 text-[#f5efe6]">
     <div className="mx-auto max-w-6xl">
     <div className="mb-12 text-center">
      <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#c9a96e]">

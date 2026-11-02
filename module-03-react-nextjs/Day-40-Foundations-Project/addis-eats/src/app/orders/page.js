@@ -1,6 +1,12 @@
 import { db, getSession } from "@/lib/db";
-import CancelOrderButton from "./CancelOrderButton";
 import OrderTable from "./OrderTable";
+import ExportOrders from "./ExportOrders";
+import Link from "next/link";
+//import {when} from "@/lib/format";
+
+// etb.format(240);
+// when.format(new Date(order.createdAt));
+// relative.format(-12, "minute");
 
 export default async function OrdersPage(props) {
   const searchParams = await props.searchParams;
@@ -23,6 +29,7 @@ export default async function OrdersPage(props) {
             Track your recent food orders and delivery updates.
           </p>
         </div>
+        <ExportOrders orders={orders} />
 
         {orders.length === 0 ? (
           <div className="rounded-2xl border border-[#6f6252]/40 bg-[#211b15] p-12 text-center text-[#b8afa3] shadow-xl">
