@@ -24,24 +24,40 @@ export default function CheckoutForm({ cartItems }) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-    setLoading(true);
-    setError('');
+ 
+async function handleSubmit(event) {
+  event.preventDefault();
 
+  if (loading) return;
+
+  setLoading(true);
+  setError('');
+
+  try {
     const formData = new FormData(event.currentTarget);
     formData.set('items', JSON.stringify(cartItems));
 
     const response = await placeOrder(null, formData);
 
     if (!response?.success) {
-      setError(response?.message || 'Something went wrong. Please try again.');
-      setLoading(false);
-    } else {
-  clearCart();
-  window.location.href = `/orders?message=${encodeURIComponent(response.message)}`;
-}
+      setError(
+        response?.message || 'Something went wrong. Please try again.'
+      );
+      return;
+    }
+
+    clearCart();
+
+    window.location.href =
+      `/orders?message=${encodeURIComponent(response.message)}`;
+
+  } catch (error) {
+    setError('Unable to place your order. Please try again.');
+  } finally {
+    setLoading(false);
   }
+}
+
 
   return (
     <form onSubmit={handleSubmit}
@@ -76,7 +92,7 @@ export default function CheckoutForm({ cartItems }) {
           <span className="inline-flex items-center px-4 rounded-l-md border border-r-0 border-[#6f6252]/50 bg-[#17130f] text-[#c9a96e] text-sm font-semibold">
             +251
           </span>
-          <input type="tel" id="phone" name="phone" required
+          <input type="tel" id="phone" name="phone" inputMode="numeric" required
             placeholder="911234567"
             className="w-full rounded-r-md border border-[#6f6252]/50 bg-[#17130f] px-4 py-3 text-sm text-[#f5efe6] placeholder-[#6f6252] focus:border-[#c9a96e] focus:outline-none focus:ring-1 focus:ring-[#c9a96e]" />
         </div>
@@ -99,7 +115,7 @@ export default function CheckoutForm({ cartItems }) {
         </select>
       </div>
       <button type="submit" disabled={loading}
-        className="w-full rounded-md bg-[#c9a96e] px-7 py-3.5 font-semibold text-[#17130f] transition hover:bg-[#dfc38d] shadow-lg disabled:opacity-50" >
+        className="w-full rounded-md bg-[#c9a96e] px-7 py-3.5 min-h-11 font-semibold text-[#17130f] transition hover:bg-[#dfc38d] shadow-lg disabled:opacity-50" >
         {loading ? 'Placing Order...' : 'Confirm Order'}
       </button>
     </form>

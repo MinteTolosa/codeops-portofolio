@@ -1,7 +1,7 @@
 
 export default function Loading() {
   return (
-    <main>
+    <main className="flex-1">
       <p>Loading dish details...</p>
     </main>
   );

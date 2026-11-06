@@ -43,7 +43,7 @@ const mockDishes = [
   },
 ];
 
-const mockOrders = [];
+const mockOrders =globalThis.__addisEatsMockOrders || (globalThis.__addisEatsMockOrders = []);
 
 // Day 42 — Temporary mock user storage
 const mockUsers = [];
@@ -113,6 +113,37 @@ export async function markCancelled(id) {
   }
 
   order.status = "CANCELLED";
+  order.updatedAt = new Date().toISOString();
+
+  return order;
+}
+
+export async function updateOrderStatus(id, status) {
+  console.log("Searching for order:", id);
+
+  console.log(
+    "Available orders:",
+    mockOrders.map((order) => order.id)
+  );
+
+  const order = await getOrder(id);
+
+  if (!order) {
+    throw new Error(`Order not found: ${id}`);
+  }
+
+  const allowedStatuses = [
+    "PENDING",
+    "PREPARING",
+    "DELIVERED",
+    "CANCELLED",
+  ];
+
+  if (!allowedStatuses.includes(status)) {
+    throw new Error("Invalid order status");
+  }
+
+  order.status = status;
   order.updatedAt = new Date().toISOString();
 
   return order;
