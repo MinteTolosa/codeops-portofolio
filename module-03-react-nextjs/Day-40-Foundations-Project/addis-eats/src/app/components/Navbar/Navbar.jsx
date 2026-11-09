@@ -7,8 +7,8 @@ export default async function Navbar() {
   const user = await getSession();
 
   return (
-    <header className="border-b border-[#6f6252]/30 bg-[#17130f]">
-      <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5">
+    <header className="border-b border-[#6f6252]/30 bg-[#17130f] print:hidden">
+      <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5 print:hidden">
         <Link href="/"
           className="text-2xl font-bold tracking-wide text-[#c9a96e]" >
           Addis-Eats

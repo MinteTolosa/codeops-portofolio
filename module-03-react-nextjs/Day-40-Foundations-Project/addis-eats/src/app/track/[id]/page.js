@@ -35,14 +35,11 @@ export default async function TrackPage({ params }) {
             Delivery Location
           </h2>
 
-          <MapPanel />
+          <MapPanel
+            deliveryAddress={order.neighborhood || "Address not provided"}/>
 
           <p className="text-sm text-[#b8afa3]">
-            Delivery area: {order.neighborhood || "Bole"}
-          </p>
-
-          <p className="text-sm text-[#b8afa3]">
-            The map currently shows example locations.
+            Delivery area: {order.neighborhood || "Address not provided"}
           </p>
         </section>
 

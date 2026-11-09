@@ -1,4 +1,3 @@
-
 "use server";
 
 // Day 39 — Server Actions and Order Ownership
@@ -15,7 +14,6 @@ export async function cancelOrder(orderId) {
       message: "Please sign in to cancel an order.",
     };
   }
-
   if (typeof orderId !== "string" || !orderId.trim()) {
     return {
       success: false,
@@ -23,34 +21,42 @@ export async function cancelOrder(orderId) {
     };
   }
 
-  const order = await getOrder(orderId);
-
-  if (!order) {
-    return {
-      success: false,
-      message: "Order not found.",
-    };
-  }
-
-  if (order.userId !== user.id) {
-    return {
-      success: false,
-      message: "You cannot cancel another user's order.",
-    };
-  }
-
-  if (order.status === "CANCELLED") {
-    return {
-      success: false,
-      message: "This order has already been cancelled.",
-    };
-  }
-
   try {
+
+    const order = await getOrder(orderId);
+
+    if (!order) {
+      return {
+        success: false,
+        message: "Order not found.",
+      };
+    }
+    if (String(order.userId) !== String(user.id)) {
+      return {
+        success: false,
+        message: "You cannot cancel another user's order.",
+      };
+    }
+
+    if (order.status === "CANCELLED") {
+      return {
+        success: false,
+        message: "This order has already been cancelled.",
+      };
+    }
+
+    if (order.status === "DELIVERED") {
+      return {
+        success: false,
+        message: "Delivered orders cannot be cancelled.",
+      };
+    }
+
     await markCancelled(orderId);
 
     revalidatePath("/orders");
     revalidatePath(`/orders/${orderId}`);
+    revalidatePath(`/track/${orderId}`);
 
     return {
       success: true,

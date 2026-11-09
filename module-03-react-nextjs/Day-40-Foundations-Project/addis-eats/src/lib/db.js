@@ -44,6 +44,10 @@ const mockDishes = [
 ];
 
 const mockOrders =globalThis.__addisEatsMockOrders || (globalThis.__addisEatsMockOrders = []);
+// Day 48 — Idempotency protection
+const idempotencyKeys =
+  globalThis.__addisEatsIdempotencyKeys ||
+  (globalThis.__addisEatsIdempotencyKeys = new Map());
 
 // Day 42 — Temporary mock user storage
 const mockUsers = [];
@@ -89,27 +93,55 @@ export async function getDish(id) {
   return mockDishes.find((dish) => dish.id === id) || null;
 }
 
+// Day 48 — Prevent duplicate order creation
+
 export async function createOrder(data) {
-  const newOrder = {
-    id: `ord_${Math.floor(100 + Math.random() * 900)}`,
-    ...data,
+  const { idempotencyKey, ...orderData } = data;
+
+  if (!idempotencyKey) {
+    throw new Error("Idempotency key is required.");
+  }
+
+  const requestKey = `${orderData.userId}:${idempotencyKey}`;
+
+  const existingOrder = idempotencyKeys.get(requestKey);
+
+  if (existingOrder) {
+    return existingOrder;
+  }
+  const order = {
+    ...orderData,
+    id: `ord_${randomUUID()}`,
     status: "PENDING",
     createdAt: new Date().toISOString(),
   };
 
-  mockOrders.push(newOrder);
-  return newOrder;
+  mockOrders.push(order);
+
+  idempotencyKeys.set(requestKey, order);
+
+  return order;
 }
 
 export async function getOrder(id) {
   return mockOrders.find((order) => order.id === id) || null;
 }
 
+// Day 50 — Safe order cancellation
+
 export async function markCancelled(id) {
   const order = await getOrder(id);
 
   if (!order) {
-    throw new Error("Order not found");
+    throw new Error("Order not found.");
+  }
+
+  if (order.status === "CANCELLED") {
+    throw new Error("This order has already been cancelled.");
+  }
+
+  if (order.status === "DELIVERED") {
+    throw new Error("Delivered orders cannot be cancelled.");
   }
 
   order.status = "CANCELLED";

@@ -1,3 +1,4 @@
+
 import { getOrder } from "@/lib/db";
 
 export async function GET(request, { params }) {
@@ -7,8 +8,25 @@ export async function GET(request, { params }) {
     start(controller) {
       let previousStatus = null;
       let closed = false;
+      let timer;
 
-      const send = (data) => {controller.enqueue(
+      const closeStream = () => {
+        if (closed) return;
+
+        closed = true;
+        clearInterval(timer);
+
+        try {
+          controller.close();
+        } catch {
+    
+        }
+      };
+
+      const send = (data) => {
+        if (closed) return;
+
+        controller.enqueue(
           `data: ${JSON.stringify(data)}\n\n`
         );
       };
@@ -19,10 +37,9 @@ export async function GET(request, { params }) {
         try {
           const order = await getOrder(id);
 
-          if (!order) { send({ error: "Order not found" });
-            closed = true;
-            clearInterval(timer);
-            controller.close();
+          if (!order) {
+            send({ error: "Order not found" });
+            closeStream();
             return;
           }
 
@@ -35,28 +52,23 @@ export async function GET(request, { params }) {
             });
           }
 
-          if (
-            ["DELIVERED", "CANCELLED"].includes(order.status)
-          ) {
-            closed = true;
-            clearInterval(timer);
-            controller.close();
+          if (["DELIVERED", "CANCELLED"].includes(order.status)) {
+            closeStream();
           }
         } catch {
-          closed = true;
-          clearInterval(timer);
-          controller.close();
+          closeStream();
         }
       };
 
+      request.signal.addEventListener("abort", closeStream);
+
       checkOrder();
 
-      const timer = setInterval(checkOrder, 3000);
+      timer = setInterval(checkOrder, 3000);
+    },
 
-      request.signal.addEventListener("abort", () => {
-        closed = true;
-        clearInterval(timer);
-      });
+    cancel() {
+
     },
   });
 

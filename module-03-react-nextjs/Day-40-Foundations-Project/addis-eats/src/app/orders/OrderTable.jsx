@@ -123,8 +123,13 @@ export default async function OrderTable({ orders, searchParams = {} }) {
                 </td>
                 <td className="px-4 py-3">
                 <div className="flex flex-col gap-2">
+                  <Link href={`/orders/${order.id}`}
+                    className="font-medium text-[#c9a96e] hover:underline"  >
+                    View Details
+                  </Link>
+
                   <Link href={`/track/${order.id}`}
-                    className="text-[#c9a96e] hover:underline font-medium"  >
+                    className="font-medium text-[#c9a96e] hover:underline"  >
                     Track Order
                   </Link>
 
@@ -132,7 +137,7 @@ export default async function OrderTable({ orders, searchParams = {} }) {
                     <CancelOrderButton orderId={order.id} />
                   )}
                 </div>
-              </td>
+               </td>
               </tr>
             ))}
           </tbody>

@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
   return (
     <div>
-      <footer className="border-t border-[#6f6252]/40 bg-[#17130f] text-[#f5efe6]">
+      <footer className="border-t border-[#6f6252]/40 bg-[#17130f] text-[#f5efe6] print:hidden">
         <div className="mx-auto max-w-6xl grid gap-8 px-6 py-12 md:grid-cols-4">
           <div>
             <h3 className="text-xl font-bold text-[#c9a96e]">

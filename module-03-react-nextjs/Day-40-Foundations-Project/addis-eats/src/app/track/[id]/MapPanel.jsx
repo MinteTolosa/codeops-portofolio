@@ -12,6 +12,6 @@ const DeliveryMap = dynamic(
   }
 );
 
-export default function MapPanel() {
-  return <DeliveryMap />;
+export default function MapPanel(props) {
+  return <DeliveryMap {...props} />;
 }
