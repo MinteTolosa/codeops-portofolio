@@ -1,0 +1,3 @@
+module.exports=[99622,a=>{"use strict";var b=a.i(87924);a.s(["default",0,function({error:a,reset:c}){return(0,b.jsxs)("main",{className:"mx-auto max-w-xl space-y-4 px-6 py-16",children:[(0,b.jsx)("h2",{className:"text-2xl font-semibold",children:"Something went wrong."}),(0,b.jsx)("p",{children:"Please try again."}),(0,b.jsx)("button",{type:"button",onClick:()=>c(),className:"rounded-lg border px-4 py-2",children:"Try again"})]})}])}];
+
+//# sourceMappingURL=src_app_error_1a00219i51bqv.js.map

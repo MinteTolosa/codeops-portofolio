@@ -1,0 +1,26 @@
+{
+  "node": {
+    "606f00bc6ad80e774d7db2952cad74de376b53b1ac": {
+      "workers": {
+        "app/checkout/page": {
+          "moduleId": 47418,
+          "async": false
+        }
+      },
+      "filename": "src/app/checkout/actions.js",
+      "exportedName": "placeOrder"
+    },
+    "408aee85ced99bfdc6d2bd7bc46289bb4919e2b90c": {
+      "workers": {
+        "app/orders/page": {
+          "moduleId": 43867,
+          "async": false
+        }
+      },
+      "filename": "src/app/orders/actions.js",
+      "exportedName": "cancelOrder"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "gy0QAV5B7h15L483XjhrnbJuGox7OTlIYLGbccojDek="
+}

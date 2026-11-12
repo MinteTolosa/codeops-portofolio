@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/app/menu/layout.js"],"sourcesContent":["import React from 'react'\n\nexport default function layout({children}) {\n  return (\n    <div>{children}</div>\n  )\n}\n"],"names":["layout","children"],"mappings":"uDAAA,EAAA,CAAA,CAAA,sBAEe,SAASA,AAAO,UAACC,CAAQ,CAAC,EACvC,MACE,CAAA,EAAA,EAAA,GAAA,EAAC,MAAA,UAAKA,GAEV"}

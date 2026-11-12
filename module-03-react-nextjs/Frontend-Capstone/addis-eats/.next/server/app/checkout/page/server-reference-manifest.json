@@ -1,0 +1,15 @@
+{
+  "node": {
+    "606f00bc6ad80e774d7db2952cad74de376b53b1ac": {
+      "workers": {
+        "app/checkout/page": {
+          "moduleId": 47418,
+          "async": false
+        }
+      },
+      "exportedName": "placeOrder",
+      "filename": "src/app/checkout/actions.js"
+    }
+  },
+  "edge": {}
+}

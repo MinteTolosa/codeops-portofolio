@@ -1,0 +1,15 @@
+{
+  "node": {
+    "408aee85ced99bfdc6d2bd7bc46289bb4919e2b90c": {
+      "workers": {
+        "app/orders/page": {
+          "moduleId": 43867,
+          "async": false
+        }
+      },
+      "exportedName": "cancelOrder",
+      "filename": "src/app/orders/actions.js"
+    }
+  },
+  "edge": {}
+}
