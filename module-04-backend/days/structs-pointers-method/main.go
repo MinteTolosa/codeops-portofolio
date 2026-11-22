@@ -29,8 +29,26 @@ func (o Order) subtotalSantim() int {
 	return total
 }
 
+	//Pointer receiver - (o *Order)
+
+func (o *Order) AddItem(d Dish) {
+    o.Items = append(o.Items, d)
+}
+
 func markPaid(o *Orders) {
 	o.Paid = true
+}
+
+	//Composition means building a bigger struct by combining smaller structs.
+
+	type Person struct {
+    Name  string
+    Phone string
+}
+
+	type Courier struct {
+    Person		//This is called embedding - one struct inside another without giving it a field name. 
+    Vehicle string
 }
 
 func main() {
@@ -64,7 +82,7 @@ func main() {
 
 	price := 120000
 
-	p := &price //&price - The memory address of price
+	p := &price 		//&price - The memory address of price
 
 	fmt.Println(price) //the actual prices value
 	fmt.Println(p)     //A pointer holding that address
@@ -78,6 +96,13 @@ func main() {
 
 	fmt.Println(order1.Paid)
 
+	//calling the method that receives a pointer
+
+	order.AddItem(Dish{
+    	Name: "Shiro",
+    	PriceSantim: 12000,
+	})
+
 	//method functions order 
 
 	methodOrder := Order{
@@ -87,5 +112,18 @@ func main() {
 		},
 	}
 	fmt.Println("Method Order subtotal value:",methodOrder.subtotalSantim())
+	
+
+	//Creating a Courier
+	//Embedding can promote fields and methods from the embedded struct. 
+	// However, it is not the same as inheritance in languages like Java.
+	courier := Courier{
+    Person: Person{
+        Name:  "Dawit Tesfaye",
+        Phone: "0911223344",
+    },
+    Vehicle: "Motorbike",
+}
+	fmt.Println(courier.Name)
 
 }
